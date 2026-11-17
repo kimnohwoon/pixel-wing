@@ -53,8 +53,11 @@
   #hud .center-badge, #hud .bottom{ transition:opacity .25s; }
   #hud.attract .center-badge, #hud.attract .bottom{ opacity:0; }
   .top{
-    position:absolute; top:calc(10px * var(--s)); left:calc(12px * var(--s));
-    right:calc(10px * var(--s)); display:flex; align-items:flex-start; justify-content:space-between;
+    position:absolute;
+    top:calc(10px * var(--s) + env(safe-area-inset-top, 0px));
+    left:calc(12px * var(--s) + env(safe-area-inset-left, 0px));
+    right:calc(10px * var(--s) + env(safe-area-inset-right, 0px));
+    display:flex; align-items:flex-start; justify-content:space-between;
   }
   .lbl{
     font-size:calc(8px * var(--s)); letter-spacing:calc(.5px * var(--s));
@@ -79,7 +82,9 @@
   #combo.on{ opacity:1; }
 
   .bottom{
-    position:absolute; left:calc(12px * var(--s)); bottom:calc(14px * var(--s));
+    position:absolute;
+    left:calc(12px * var(--s) + env(safe-area-inset-left, 0px));
+    bottom:calc(14px * var(--s) + env(safe-area-inset-bottom, 0px));
     display:flex; flex-direction:column; gap:calc(4px * var(--s));
   }
   #lives{ display:flex; align-items:center; gap:calc(7px * var(--s)); height:calc(11px * var(--s)); }
@@ -98,7 +103,9 @@
   #power b{ color:#66ffd0; }
 
   #bomb{
-    position:absolute; right:calc(14px * var(--s)); bottom:calc(16px * var(--s));
+    position:absolute;
+    right:calc(14px * var(--s) + env(safe-area-inset-right, 0px));
+    bottom:calc(16px * var(--s) + env(safe-area-inset-bottom, 0px));
     width:calc(76px * var(--s)); height:calc(76px * var(--s));
     border-radius:50%; pointer-events:auto; cursor:pointer;
     background:radial-gradient(circle at 50% 38%, rgba(255,70,140,.35), rgba(60,0,30,.55) 70%);
