@@ -773,6 +773,14 @@ function killBoss(){
   addScore(bonus);
   G.stageBonus = bonus;
   ebullets.length = 0;
+  // any minions still alive go down with the boss, so nothing freezes behind the clear banner
+  for (var k = 0; k < enemies.length; k++){
+    var en = enemies[k];
+    if (en.dead) continue;
+    burst(en.x, en.y, 8, en.color, 180);
+    en.dead = true;
+  }
+  enemies.length = 0;
   boss = null;
   player.bombs = Math.min(5, player.bombs + 1);
   G.state = 'clear';
